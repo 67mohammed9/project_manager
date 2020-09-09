@@ -1,15 +1,19 @@
 import React from 'react';
+import {useDispatch} from 'react-redux'
+import { deleteTask } from '../redux/actions';
 
-
-const TaskItem = ({desc, key}) => {
+const TaskItem = ({task}) => {
+    const dispatch = useDispatch();
     return (
     <div className="row">
         <div className="row"> 
-            <div>{key} </div>
+            <div className="row">{task.id}</div>
             <div className ="row">
-                <h4>{desc}</h4>
+                <h4>{task.description}</h4>
             </div>
-            <button>Delete Task</button>
+            <button
+            onClick={(()=>dispatch(deleteTask(task.id)))}
+            >Delete Task</button>
         </div>
     </div>
     );

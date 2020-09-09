@@ -1,13 +1,17 @@
 import { ADD_TASK, DELETE_TASK } from "./actionTypes";
 
-export function addTask(task){
+let nextId =4;
+export const addTask= (task)=>{
     return {
         type: ADD_TASK,
-        payload: task,
+        payload: {
+            id : ++nextId,
+            description : task,
+        }
     }
 }
 
-export function deleteTask(taskId){
+export const deleteTask= (taskId)=>{
     return {
         type: DELETE_TASK,
         payload: taskId,
