@@ -5,10 +5,11 @@ import { useParams } from 'react-router-dom';
 
 const ProjectScreen = () => {
     let params = useParams();
+    console.log(params);
     return (
         <div>
             <TaskInput/>
-            <TaskArray projectId= {params.id}/>
+            <TaskArray projectId={params.id}/>
         </div>
     );
 };
