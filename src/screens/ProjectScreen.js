@@ -8,7 +8,7 @@ const ProjectScreen = () => {
     return (
         <div>
             <TaskInput/>
-            <TaskArray projectId= {params.id}/>
+            <TaskArray projectId={params.id}/>
         </div>
     );
 };
