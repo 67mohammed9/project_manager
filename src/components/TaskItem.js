@@ -12,7 +12,7 @@ const TaskItem = ({id, task}) => {
                 <h4>{task.description}</h4>
             </div>
             <button
-            onClick={(()=>dispatch(deleteTask(id, task.id)))}
+            onClick={(()=>dispatch(deleteTask(task.id, id)))}
             >Delete Task</button>
         </div>
     </div>

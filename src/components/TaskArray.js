@@ -1,11 +1,12 @@
 import React from 'react';
 import TaskItem from './TaskItem'
 import { useSelector } from 'react-redux'
-
+import { store } from '../redux/store';
 
 const TaskArray = ({ projectId }) => {
+    console.log(store.getState());
     console.log(projectId)
-    const project = useSelector(state => state.projects.find(project => project.id == projectId));
+    const project = useSelector(state => state.projects.find(project => project.id == parseInt(projectId)));
     console.log(project);
     return (
         <div>     

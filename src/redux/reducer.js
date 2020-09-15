@@ -12,7 +12,7 @@ export const taskReducer = (state = initialState, action) =>{
         }
         case DELETE_TASK: {
             let projects = state.projects;
-            const projectToChangeIndex = projects.findIndex((project) => project.id === action.payload.projectId)
+            const projectToChangeIndex = projects.findIndex((project) => project.id == action.payload.projectId);
             if (projectToChangeIndex === -1) {
                 return {
                     ...state,
@@ -23,7 +23,6 @@ export const taskReducer = (state = initialState, action) =>{
                 ...project,
                 tasks: project.tasks.filter(task => task.id !== action.payload.taskId)
             };
-
             projects = projects.map(project => {
                 if (project.id === updatedProject.id) {
                     return updatedProject;
