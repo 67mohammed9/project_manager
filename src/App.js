@@ -12,7 +12,7 @@ function App() {
       <Route exact path ="/" component = {HomeScreen}/>
       <Route exact path ="/login" component = {LoginScreen}/>
       <Route exact path ="/register" component = {RegisterScreen}/>
-      <Route exact path ="/project" component = {ProjectScreen}/>
+      <Route exact path ="/project/:id" component = {ProjectScreen}/>
     </Router>
   );
 }

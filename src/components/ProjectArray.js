@@ -3,6 +3,8 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Project from './Project';
 import AddProjectButton from './AddProjectButton';
+import { useSelector } from 'react-redux'
+
 
 const useStyles = makeStyles({
   gridContainer: {
@@ -13,6 +15,7 @@ const useStyles = makeStyles({
 
 const ProjectArray = () => {
     const classes = useStyles();
+    const  project = useSelector(state => state.projects);
     return (
         <Grid
         container
@@ -20,24 +23,17 @@ const ProjectArray = () => {
         className={classes.gridContainer}
         justify="center"
       >
-        <Grid item xs={12} sm={6} md={4}>
-            <Project />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-            <Project />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-            <Project />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-            <Project />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-            <Project />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-            <Project />
-        </Grid>
+           
+            {
+                project.map(projectItem =>{
+                    return (
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Project id={projectItem.id} />
+                        </Grid>
+                    )            
+                })
+            }
+        
         <Grid item xs={12} sm={6} md={4}>
             <AddProjectButton />
         </Grid>

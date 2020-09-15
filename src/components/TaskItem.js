@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch} from 'react-redux'
 import { deleteTask } from '../redux/actions';
 
-const TaskItem = ({task}) => {
+const TaskItem = ({id, task}) => {
     const dispatch = useDispatch();
     return (
     <div className="row">
@@ -12,7 +12,7 @@ const TaskItem = ({task}) => {
                 <h4>{task.description}</h4>
             </div>
             <button
-            onClick={(()=>dispatch(deleteTask(task.id)))}
+            onClick={(()=>dispatch(deleteTask(id, task.id)))}
             >Delete Task</button>
         </div>
     </div>

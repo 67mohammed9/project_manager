@@ -11,9 +11,12 @@ export const addTask= (task)=>{
     }
 }
 
-export const deleteTask= (taskId)=>{
+export const deleteTask= (taskId, projectId)=>{
     return {
         type: DELETE_TASK,
-        payload: taskId,
+        payload: {
+            projectId,
+            taskId,
+        }
     }
 }

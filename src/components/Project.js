@@ -21,9 +21,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Project() {
+export default function Project({id}) {
   const classes = useStyles();
-
+  
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -44,9 +44,15 @@ export default function Project() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to={'/project'}>
-          Open Tasks
+        <Link
+          to={{ pathname: `/project/${id}` }}
+          style={{ textDecoration: 'none' }}
+        >
+          <Button size="small" color="primary"  >
+            Open Tasks
         </Button>
+        </Link>
+       
         <Button size="small" color="secondary" >
           Delete Project
         </Button>
