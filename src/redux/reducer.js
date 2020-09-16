@@ -5,10 +5,39 @@ import {initialState} from './tasks';
 export const taskReducer = (state = initialState, action) =>{
     switch(action.type) {
         case ADD_TASK: {
+            let projects = state.projects;
+            const projectToChangeIndex = projects.findIndex((project) => project.id == action.payload.projectId);
+            if (projectToChangeIndex === -1) {
+                return {
+                    ...state,
+                }
+            }
+            const project = projects[projectToChangeIndex];
+            const updatedProject = {
+                ...project,
+                tasks: [...project.tasks, {
+                    id: action.payload.newtask.id,
+                    description: action.payload.newtask.description
+                }
+                ]
+            };
+            console.log(updatedProject)
+            projects = projects.map(project => {
+                if (project.id === updatedProject.id) {
+                    return updatedProject;
+                }
+                else{
+                    return{
+                        ...state,
+                    }
+                }
+            });
             return {
                 ...state,
-               tasks: [...state.tasks, action.payload]
-            };
+                projects:[
+                    ...projects,
+                ]
+            }
         }
         case DELETE_TASK: {
             let projects = state.projects;
@@ -27,8 +56,12 @@ export const taskReducer = (state = initialState, action) =>{
                 if (project.id === updatedProject.id) {
                     return updatedProject;
                 }
+                else{
+                    return{
+                        ...state,
+                    }
+                }
             });
-
             return {
                 ...state,
                 projects:[
@@ -45,16 +78,3 @@ export const taskReducer = (state = initialState, action) =>{
 
 
 
-
-/*
- const content = Object.assign({}, state);
-            content.projects = content.projects.map(
-                project => {
-                    const newObj = { ...project };
-                    if (newObj.id === action.payload.projectId) {
-                        return newObj.tasks.filter(tasks => tasks.id !== action.payload.taskId);
-                    }
-                     console.log(state);
-                    return newObj;
-
-*/

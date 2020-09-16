@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux'
 import { store } from '../redux/store';
 
 const TaskArray = ({ projectId }) => {
-    console.log(store.getState());
-    console.log(projectId)
-    const project = useSelector(state => state.projects.find(project => project.id == parseInt(projectId)));
-    console.log(project);
+    const project = useSelector(state => state.projects.find(project => project.id == projectId));
+    
     return (
         <div>     
             {

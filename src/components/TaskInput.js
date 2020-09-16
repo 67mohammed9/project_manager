@@ -4,7 +4,7 @@ import {addTask} from '../redux/actions'
 
 
 
-const TaskInput = () => {
+const TaskInput = ({projectId}) => {
 
     const [task, setTask] = useState();
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const TaskInput = () => {
     const onSubmit = (event) => {
         event.preventDefault();
         if (task.trim() ==='') return;
-        dispatch(addTask(task))
+        dispatch(addTask(task,projectId))
         setTask('');
     };
 

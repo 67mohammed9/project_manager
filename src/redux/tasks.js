@@ -1,5 +1,3 @@
-import { normalize, schema } from 'normalizr';
-
 
 
 export const initialState = {
@@ -99,6 +97,4 @@ projects:[
 ]
     
 }
-
-
 

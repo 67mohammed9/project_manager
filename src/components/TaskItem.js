@@ -8,11 +8,15 @@ const TaskItem = ({id, task}) => {
     <div className="row">
         <div className="row"> 
             <div className="row">{task.id}</div>
+            {
+                
+            }
             <div className ="row">
                 <h4>{task.description}</h4>
+                
             </div>
             <button
-            onClick={(()=>dispatch(deleteTask(task.id, id)))}
+            onClick={()=>dispatch(deleteTask(task.id, id))}
             >Delete Task</button>
         </div>
     </div>
