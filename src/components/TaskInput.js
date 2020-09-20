@@ -6,7 +6,7 @@ import {addTask} from '../redux/actions'
 
 const TaskInput = ({projectId}) => {
 
-    const [task, setTask] = useState();
+    const [task, setTask] = useState('');
     const dispatch = useDispatch();
     
    
@@ -14,7 +14,7 @@ const TaskInput = ({projectId}) => {
         setTask(event.target.value)
     };
 
-    const onSubmit = (event) => {
+    const onSubmitHandler = (event) => {
         event.preventDefault();
         if (task.trim() ==='') return;
         dispatch(addTask(task,projectId))
@@ -23,7 +23,7 @@ const TaskInput = ({projectId}) => {
 
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmitHandler}>
             <div>
                 <input 
                  name="task" 
@@ -33,7 +33,7 @@ const TaskInput = ({projectId}) => {
                  onChange={onChange}
                  />
                 <button
-                    onClick={onSubmit}
+                    onClick={onSubmitHandler}
                 >Add Task</button>
             </div>
         </form>

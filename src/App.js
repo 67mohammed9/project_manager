@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import ProjectScreen from './screens/ProjectScreen';
@@ -12,9 +13,10 @@ function App() {
       <Route exact path ="/" component = {HomeScreen}/>
       <Route exact path ="/login" component = {LoginScreen}/>
       <Route exact path ="/register" component = {RegisterScreen}/>
-      <Route exact path ="/project/:id" component = {ProjectScreen}/>
+      <Route exact path ="/project/:id" component = {ProjectScreen}/> 
     </Router>
   );
 }
 
 export default App;
+

@@ -1,7 +1,6 @@
 import { createStore } from 'redux';
-import {taskReducer} from './reducer';
-import { initialState } from './tasks';
+import rootReducer from '../redux/reducer'
 
+export const store = createStore(rootReducer);
 
-export const store = createStore(taskReducer,initialState);
-
+console.log(store.getState())

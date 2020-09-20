@@ -4,15 +4,14 @@ import { useSelector } from 'react-redux'
 import { store } from '../redux/store';
 
 const TaskArray = ({ projectId }) => {
-    const project = useSelector(state => state.projects.find(project => project.id == projectId));
-    
+    const project = useSelector(state => state.taskReducer.projects.find(project => project.id == projectId));
+
     return (
-        <div>     
+        <div>
             {
                 project.tasks.map(taskItem => {
-                     return <TaskItem id={projectId} task={taskItem} />     
-                 })
-                
+                    return <TaskItem id={projectId} task={taskItem} />
+                })
             }
         </div>
 

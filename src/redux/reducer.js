@@ -1,8 +1,11 @@
-import {ADD_TASK, DELETE_TASK} from './actionTypes';
+import {ADD_TASK, DELETE_TASK, ADD_PROJECT, DELETE_PROJECT} from './actionTypes';
 import {initialState} from './tasks';
+import {combineReducers} from 'redux'
 
 
-export const taskReducer = (state = initialState, action) =>{
+
+
+const taskReducer = (state = initialState, action) =>{
     switch(action.type) {
         case ADD_TASK: {
             let projects = state.projects;
@@ -69,8 +72,21 @@ export const taskReducer = (state = initialState, action) =>{
                 ]
             }
         }
-           
-        //tasks: state.projects.find(project => project.id == action.payload.projectId ).tasks.filter((task) => task.id !== action.payload.taskId) 
+        default: return state
+    }
+}
+
+const projectReducer=(state=initialState,action)=>{
+    switch(action.type){
+        case ADD_PROJECT:{
+            console.log(action.payload)
+            return {
+                ...state,
+                projects:[
+                    ...state.projects, action.payload
+                ]
+            }
+        }
         default: return state
     }
 }
@@ -78,3 +94,10 @@ export const taskReducer = (state = initialState, action) =>{
 
 
 
+
+const rootReducer = combineReducers({
+    taskReducer,
+    projectReducer
+})
+
+export default rootReducer;
