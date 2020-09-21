@@ -10,11 +10,13 @@ export const Form = ({ closeModal}) => {
   const dispatch = useDispatch();
   
  
-  const onChange = (event) =>{
+  const onChangeTitle = (event) =>{
       setProjectTitle(event.target.value)
-      setProjectAbout(event.target.value)
   };
 
+  const onChangeAbout=(event)=>{
+    setProjectAbout(event.target.value);
+  }
 
   const onSubmit = (event) => {
     event.preventDefault(event);
@@ -34,11 +36,11 @@ export const Form = ({ closeModal}) => {
       </div>
       <div className="form-group">
         <label htmlFor="Title">Title</label>
-        <input className="form-control" onChange={onChange}id="name" placeholder="title" />
+        <input className="form-control" onChange={onChangeTitle}id="name" placeholder="title" />
       </div>
       <div className="form-group">
         <label htmlFor="email">About</label>
-        <TextareaAutosize className="form-control" onChange={onChange} aria-label="minimum height" rowsMin={6} cols={20} placeholder="about" id="about" />
+        <TextareaAutosize className="form-control" onChange={onChangeAbout} aria-label="minimum height" rowsMin={6} cols={20} placeholder="about" id="about" />
       </div>
       <div className="form-group">
         <button className="form-control btn btn-primary" onClick={onSubmit} type="submit" >

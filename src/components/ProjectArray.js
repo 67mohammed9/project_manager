@@ -6,7 +6,7 @@ import Project from './Project';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import AddProject from './CreateProject/Container'
 import { useSelector } from 'react-redux'
-import{store} from '../redux/store'
+
 
 
 const useStyles = makeStyles({
@@ -18,8 +18,8 @@ const useStyles = makeStyles({
 let number = 2;
 const ProjectArray = () => {
     const classes = useStyles();
-    const  project = useSelector(state => state.projectReducer.projects);
-    console.log(store.getState())
+    const  project = useSelector(state => state.projects);
+    console.log(project)
     return (
       <Grid container spacing={3} className={classes.gridContainer}> 
         {

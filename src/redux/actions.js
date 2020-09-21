@@ -1,4 +1,4 @@
-import { ADD_PROJECT, ADD_TASK, DELETE_TASK } from "./actionTypes";
+import { ADD_PROJECT, ADD_TASK, DELETE_TASK, DELETE_PROJECT} from "./actionTypes";
 
 let nextTaskId =4;
 let nextProjectId=4;
@@ -33,6 +33,15 @@ export const addProject= (projectTitle,projectAbout)=>{
            title: projectTitle,
            about: projectAbout,
            tasks: [],
+        }
+    }
+}
+
+export const deleteProject= (projectId)=>{
+    return {
+        type: DELETE_PROJECT,
+        payload: {
+            projectId,
         }
     }
 }

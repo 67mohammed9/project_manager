@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import {Grid} from '@material-ui/core'
 import img from '../images/lizard.jpg';
 import { Link } from 'react-router-dom';
-
+import { deleteProject } from '../redux/actions';
+import {useDispatch} from 'react-redux'
 
 const useStyles = makeStyles({
   root: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
 
 export default function Project({ project }) {
   const classes = useStyles();
-
+  const dispatch =useDispatch();
   return (
     <Grid item xs={12} sm={6} md={4} justify="center">
       <Card className={classes.root}>
@@ -58,11 +59,11 @@ export default function Project({ project }) {
           >
             <Button size="small" color="primary"  >
               Open Tasks
-        </Button>
+            </Button>
           </Link>
-          <Button size="small" color="secondary" >
+          <Button  onClick={()=>dispatch(deleteProject(project.id))}size="small" color="secondary" >
             Delete Project
-        </Button>
+          </Button>
         </CardActions>
       </Card>
     </Grid>

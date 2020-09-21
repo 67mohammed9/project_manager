@@ -1,11 +1,11 @@
 import {ADD_TASK, DELETE_TASK, ADD_PROJECT, DELETE_PROJECT} from './actionTypes';
 import {initialState} from './tasks';
-import {combineReducers} from 'redux'
 
 
 
 
-const taskReducer = (state = initialState, action) =>{
+
+const reducer = (state = initialState, action) =>{
     switch(action.type) {
         case ADD_TASK: {
             let projects = state.projects;
@@ -30,15 +30,13 @@ const taskReducer = (state = initialState, action) =>{
                     return updatedProject;
                 }
                 else{
-                    return{
-                        ...state,
-                    }
+                    return project
                 }
             });
             return {
                 ...state,
                 projects:[
-                    ...projects,
+                    ...projects
                 ]
             }
         }
@@ -61,7 +59,7 @@ const taskReducer = (state = initialState, action) =>{
                 }
                 else{
                     return{
-                        ...state,
+                        ...project
                     }
                 }
             });
@@ -72,19 +70,18 @@ const taskReducer = (state = initialState, action) =>{
                 ]
             }
         }
-        default: return state
-    }
-}
-
-const projectReducer=(state=initialState,action)=>{
-    switch(action.type){
         case ADD_PROJECT:{
-            console.log(action.payload)
             return {
                 ...state,
                 projects:[
                     ...state.projects, action.payload
                 ]
+            }
+        }
+        case DELETE_PROJECT:{
+            return {
+                ...state,
+                projects: state.projects.filter(project=>project.id!==action.payload.projectId)
             }
         }
         default: return state
@@ -95,9 +92,4 @@ const projectReducer=(state=initialState,action)=>{
 
 
 
-const rootReducer = combineReducers({
-    taskReducer,
-    projectReducer
-})
-
-export default rootReducer;
+export default reducer;
